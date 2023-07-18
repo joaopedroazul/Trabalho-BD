@@ -1,0 +1,18 @@
+
+    CREATE TABLE "BD".Aluno (matricula serial PRIMARY KEY, nome varchar(100),curso varchar(100),email varchar(100),  is_admin boolean) 
+
+	CREATE TABLE "BD".Departamento (departamento_id serial PRIMARY KEY, nome varchar(100)) 
+
+    CREATE TABLE "BD".Professor (matricula serial PRIMARY KEY, nome varchar(100), 
+	 fk_departamento_id integer REFERENCES "BD".Departamento (departamento_id))
+
+    CREATE TABLE "BD".Disciplina (disciplina_id serial PRIMARY KEY, nome varchar(100), fk_departamento_id integer REFERENCES "BD".Departamento (departamento_id)) 
+
+    CREATE TABLE "BD".Turma (turma_id serial PRIMARY KEY, nome varchar(100), fk_professor_id integer REFERENCES "BD".Professor (professor_id),
+							 fk_disciplina_id integer REFERENCES "BD".Disciplina (disciplina_id)) 
+
+
+    CREATE TABLE "BD".Avaliacao (avaliacao_id serial PRIMARY KEY, nota integer, mensagem varchar(500), fk_professor_id integer REFERENCES "BD".Professor (matricula),
+								fk_disciplina_id integer REFERENCES "BD".Disciplina (disciplina_id),fk_aluno_id integer REFERENCES "BD".aluno (matricula)) 
+
+    CREATE TABLE "BD".Denuncia (denuncia_id serial PRIMARY KEY,  fk_avaliacao_id integer REFERENCES "BD".Avaliacao (avaliacao_id)) 

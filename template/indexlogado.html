@@ -1,0 +1,36 @@
+{% extends "baselogado.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <h1>Bem Vindo ao AvaliaUnB</h1>
+    <br>
+    <p>Olá caro universitario da UnB! Lhe apresento uma plataforma diretamente para você. Este é o AvaliaUnB! A plataforma que permite que você deixe sua avaliação, comentarios, e ou denuncias.</p>
+    <p>Faça parte da comunidade número 1 de feedbacks da UnB.</p>
+
+    <table>
+        <thead>
+          <tr>
+            <th>Matricula</th>
+            <th>Aluno</th>
+            <th>Curso</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in data %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock %}
